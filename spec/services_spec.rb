@@ -10,7 +10,7 @@ describe 'kafka_broker::services' do
     runner.converge(described_recipe)
   end
 
-  %w[zookeeper kafka].each do |prg|
+  %w[zookeeper kafka_broker].each do |prg|
     it "should create the #{prg} init script" do
       expect(runner).to create_template("/etc/init.d/#{prg}").
                          with(variables: {install_dir: install_dir},

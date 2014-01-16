@@ -1,4 +1,4 @@
-%w[zookeeper kafka].each do |prg|
+%w[zookeeper kafka_broker].each do |prg|
   template "/etc/init.d/#{prg}" do
     source "#{prg}_init_script.erb"
     mode "0755"
