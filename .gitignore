@@ -1,0 +1,6 @@
+*~
+.vagrant
+.kitchen
+.ruby-*.kitchen/
+.kitchen.local.yml
+.bundle
