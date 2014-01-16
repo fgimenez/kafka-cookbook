@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vb|
     vb.customize [
       "modifyvm", :id,
-      "--memory", "3076",
+      "--memory", "2048",
       "--cpus", "2",
     ]
   end
