@@ -1,16 +1,16 @@
 require_relative 'spec_helper'
 
 describe 'kafka_broker::structure' do
-  let(:base_install_dir) {'base_install_dir'}
+  let(:install_dir) {'/usr/local/kafka'}
 
   let(:runner) do
     runner = ChefSpec::Runner.new do |node|
-      node.set[described_cookbook]['base_install_dir'] = base_install_dir
+      node.set[described_cookbook]['install_dir'] = install_dir
     end
     runner.converge(described_recipe)
   end
 
   it 'creates the base install dir' do
-    expect(runner).to create_directory(base_install_dir).with(recursive: true)
+    expect(runner).to create_directory(File.dirname(install_dir)).with(recursive: true)
   end
 end

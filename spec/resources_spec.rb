@@ -1,9 +1,9 @@
 require_relative 'spec_helper'
 
 describe 'kafka_broker::resources' do
-  let(:base_install_dir) {'base_install_dir'}
+  let(:install_dir) {'/usr/local/kafka'}
+  let(:base_install_dir) {File.dirname(install_dir)}
   let(:tarball_url) {'http://url'}
-  let(:install_dir) {"#{base_install_dir}/kafka"}
   let(:version) {'version'}
   let(:tarball_file) {"kafka-#{version}-src.tgz"}
   let(:tarball_file_path) {"#{base_install_dir}/#{tarball_file}"}
@@ -11,7 +11,6 @@ describe 'kafka_broker::resources' do
   
   let(:runner) do
     runner = ChefSpec::Runner.new do |node|
-      node.set[described_cookbook]['base_install_dir'] = base_install_dir
       node.set[described_cookbook]['install_dir'] = install_dir
       node.set[described_cookbook]['tarball_url'] = tarball_url
       node.set[described_cookbook]['version'] = version

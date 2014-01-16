@@ -1,3 +1,3 @@
-directory node['kafka_broker']['base_install_dir'] do
+directory File.dirname(node['kafka_broker']['install_dir']) do
   recursive true
 end
