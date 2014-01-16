@@ -6,6 +6,6 @@
   end
 
   service prg do
-    action [:enable, :start]
+    action [:start, :enable]
   end
 end

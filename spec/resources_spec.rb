@@ -5,15 +5,17 @@ describe 'kafka_broker::resources' do
   let(:base_install_dir) {File.dirname(install_dir)}
   let(:tarball_url) {'http://url'}
   let(:version) {'version'}
-  let(:tarball_file) {"kafka-#{version}-src.tgz"}
+  let(:scala_version) {'scala_version'}
+  let(:tarball_file_base) {"kafka_#{scala_version}-#{version}"}
+  let(:tarball_file) {"#{tarball_file_base}.tar.gz"}
   let(:tarball_file_path) {"#{base_install_dir}/#{tarball_file}"}
-  let(:tarball_file_base) {File.basename(tarball_file, File.extname(tarball_file))}
-  
+    
   let(:runner) do
     runner = ChefSpec::Runner.new do |node|
       node.set[described_cookbook]['install_dir'] = install_dir
       node.set[described_cookbook]['tarball_url'] = tarball_url
       node.set[described_cookbook]['version'] = version
+      node.set[described_cookbook]['scala_version'] = scala_version
     end
     runner.converge(described_recipe)
   end
@@ -35,5 +37,9 @@ describe 'kafka_broker::resources' do
 
   it 'removes the tarball file' do
     expect(runner).to delete_file(tarball_file_path)
+  end
+
+  it 'creates the logs directory' do
+    expect(runner).to create_directory("#{install_dir}/logs")
   end
 end

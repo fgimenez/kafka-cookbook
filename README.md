@@ -14,6 +14,7 @@ The java cookbook is needed, as usual may be handled with Berkshelf.
 Attributes
 ----------
 * node['kafka_broker']['version']: Kafka version to be installed, the cookbook has been tested with 0.8.0
+* node['kafka_broker']['scala_version']: Scala version for the binary download, the cookbook has been tested with 2.8.0
 * node['kafka_broker']['tarball_url']: Where to obtain Kafka's source
 * node['kafka_broker']['install_dir']: Where to install Kafka
 * node['kafka_broker']['build_command']: Command to build from source

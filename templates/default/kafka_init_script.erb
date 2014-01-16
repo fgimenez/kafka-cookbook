@@ -63,7 +63,7 @@ start() {
     ulimit -c unlimited
     echo -n $"Starting $prog: "
     cd $HOME
-    nohup su $USER -c "./bin/kafka-server-start.sh ./config/kafka.properties" > ./logs/kafka.out 2> ./logs/kafka.err < /dev/null &
+    nohup su $USER -c "./bin/kafka-server-start.sh ./config/server.properties" > ./logs/kafka.out 2> ./logs/kafka.err < /dev/null &
     RETVAL=$?
     [ $RETVAL -eq 0 ] && echo_success
     [ $RETVAL -ne 0 ] && echo_failure
